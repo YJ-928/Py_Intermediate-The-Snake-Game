@@ -47,17 +47,17 @@ while game_is_on:
         scoreboard.increase_score()
 
     # detect collision with wall
-    # GameOver
+    # GameOver == GameRestart
     if snake.snake_head.xcor() > 290 or snake.snake_head.xcor() < -290 or snake.snake_head.ycor() > 290 or snake.snake_head.ycor() < -290:
-        game_is_on = False
-        scoreboard.game_over()
+        scoreboard.game_restart()
+        snake.reset()
 
     # detect collision with tail
-    # GameOver
+    # GameOver == GameRestart
     for segment in snake.turtle_snake[1::]:
         if snake.snake_head.distance(segment) < 10:
-            game_is_on = False
-            scoreboard.game_over()
+            scoreboard.game_restart()
+            snake.reset()
 
 # to exit screen only if we click on it
 screen.exitonclick()

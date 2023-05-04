@@ -1,4 +1,5 @@
 from turtle import Turtle
+import turtle
 
 # Declaring Constants (as all caps in Pascal-case)
 # coordinates for start of game & snake creation
@@ -21,7 +22,6 @@ class Snake:
         self.turtle_snake = []
         self.create_snake()
         self.snake_head = self.turtle_snake[0]
-        self.snake_tail = self.turtle_snake[-1]
 
     def create_snake(self):
         """Creating our snake using single sq turtles as segments"""
@@ -72,3 +72,12 @@ class Snake:
         """Moves the snake in east/right (0-degree) direction"""
         if self.snake_head.heading() != MOVE_LEFT:
             self.snake_head.setheading(MOVE_RIGHT)
+
+    def reset(self):
+        """Clears and restarts the game whenever GameOver is triggered"""
+        for segments in self.turtle_snake:
+            segments.goto(1000, 1000)
+        turtle.clear()
+        self.turtle_snake = []
+        self.create_snake()
+        self.snake_head = self.turtle_snake[0]
