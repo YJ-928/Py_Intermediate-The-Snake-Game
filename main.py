@@ -36,7 +36,7 @@ game_is_on = True
 while game_is_on:
     # to see snake only after all segments have moved
     screen.update()
-    sleep(0.1)
+    sleep(0.5)
     snake.move()
 
     # detect collision with food
